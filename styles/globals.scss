@@ -1,0 +1,140 @@
+:root {
+	--mobileSize: 375px;
+	--primary: #FFBD9E;
+	--transition: all 0.3s ease-out;
+	--fontFamily: poppins,
+		-apple-system,
+		blinkmacsystemfont,
+		"Segoe UI",
+		roboto,
+		oxygen,
+		ubuntu,
+		cantarell,
+		"Fira Sans",
+		"Droid Sans",
+		"Helvetica Neue",
+		sans-serif;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: var(--fontFamily);
+	text-rendering: optimizelegibility;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	min-width: var(--mobileSize);
+	color: #000000;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+
+	&:link,
+	&:visited {
+		text-decoration: none;
+	}
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+
+	&::before,
+	&::after {
+		box-sizing: border-box;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+::selection {
+	background-color: var(--primary);
+	color: white;
+}
+
+:focus,
+:active {
+	outline: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+	max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+input,
+button,
+textarea {
+	font-family: var(--fontFamily);
+	font-size: inherit;
+}
+
+input {
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus {
+		box-shadow: none;
+		transition: background-color 50000s ease-in-out 0s;
+	}
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	appearance: none;
+	resize: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+@media (prefers-color-scheme: white) {
+	html {
+		color-scheme: white;
+	}
+
+	body {
+		color: black;
+		background: white;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1280px;
+	padding: 0 18px;
+	box-sizing: content-box;
+}
