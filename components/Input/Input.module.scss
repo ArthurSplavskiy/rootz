@@ -1,32 +1,16 @@
 .input {
 	width: 100%;
-	padding: 7px 15px;
-	color: var(--black);
+	padding: 12px 24px;
+	max-height: 48px;
+	border-radius: 40px;
 	border: none;
-	border-radius: 5px;
-	outline-color: var(--primary);
-	background: var(--white);
-	box-shadow: 0 4px 4px rgb(0 0 0 / 50%);
-	font-size: 16px;
-	line-height: 22px;
+	background: #FFFFFF;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	color: #000000;
 }
 
 .input::placeholder {
-	color: var(--grey);
-}
-
-.error-message {
-	position: absolute;
-	top: 90%;
-	left: 0;
-	color: var(--red);
-}
-
-.error {
-	border: 1px solid var(--red);
-	outline: var(--red);
-}
-
-.input-wrapper {
-	position: relative;
+	color: #807C7C;
 }

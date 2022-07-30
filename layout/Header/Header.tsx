@@ -6,6 +6,7 @@ import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { IMenu } from '../../interfaces/menu.interface';
 import { useState } from 'react';
 import { ActiveLink } from '../../components';
+import { useEffect, useRef } from 'react';
 
 const menuLinks: IMenu[] = [
 	{ id: 0, title: 'Home', route: '/' },
@@ -16,12 +17,17 @@ const menuLinks: IMenu[] = [
 
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	const [menuActive, setMenuActive] = useState<boolean>(false);
+	const headerRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		headerRef?.current?.classList.add('headerAnimateStart');
+	}, []);
 	
 	return (
 		<>
-			<header className={cn(className, styles.header)} {...props}>
+			<header ref={headerRef} className={cn(className, styles.header)} {...props}>
 				<div className='container'>
-					<div className={styles.headerWrapper}>
+					<div className={cn(styles.headerWrapper, 'headerWrapper')}>
 						<a className={styles.headerLogo} href="/" aria-label='Rootz logotype'>
 							<Logo />
 						</a>

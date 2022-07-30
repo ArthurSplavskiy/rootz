@@ -1,0 +1,98 @@
+.section {
+	margin-top: 192px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	max-width: 352px;
+	margin-bottom: 40px;
+	align-self: center;
+
+	h2 {
+		font-weight: 700;
+		font-size: 40px;
+		line-height: 56px;
+		text-align: center;
+		text-transform: capitalize;
+		color: #222433;
+		margin-bottom: 16px;
+	}
+
+	p {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 32px;
+		text-align: center;
+		color: #1E1A20;
+	}
+}
+
+.persons {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	gap: 40px;
+	justify-content: space-between;
+}
+
+.firstVector,
+.secondVector {
+	position: absolute;
+	z-index: -1;
+	max-width: 394px;
+}
+
+.firstVector {
+	top: 0;
+	left: 20%;
+}
+
+.secondVector {
+	transform: rotate(140deg);
+	top: 30%;
+	left: 55%;
+}
+
+.firstBlob,
+.secondBlob,
+.thirdBlob {
+	width: 100%;
+	max-width: 333px;
+}
+
+.secondBlob {
+	margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+	.persons {
+		grid-template-columns: 1fr;
+	}
+
+	.secondBlob {
+		justify-self: end;
+		margin: 0;
+	}
+
+	.firstVector {
+		top: 18%;
+		left: 30%;
+		transform: rotate(40deg);
+	}
+
+	.secondVector {
+		transform: rotate(-80deg);
+		top: 50%;
+		left: 10%;
+	}
+}
+
+@media (max-width: 992px) {
+	.section {
+		margin-top: 100px;
+	}
+}

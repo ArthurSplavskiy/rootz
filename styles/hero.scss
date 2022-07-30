@@ -1,0 +1,52 @@
+.leaf1 svg,
+.leaf2 svg,
+.leaf3 svg,
+.leaf4 svg,
+.leaf5 svg {
+	transform: scale(0) translate(-200px);
+}
+
+.leaf1 svg {
+	transition: 1.5s;
+}
+
+.leaf2 svg {
+	transition: 2s;
+}
+
+.leaf3 svg {
+	transition: 2.5s;
+}
+
+.leaf4 svg {
+	transition: 2.1s;
+}
+
+.leaf5 svg {
+	transition: 1.8s;
+}
+
+.heroAnimateStart {
+	.leaf1 svg,
+	.leaf2 svg,
+	.leaf3 svg,
+	.leaf4 svg,
+	.leaf5 svg {
+		transform: scale(1);
+	}
+}
+
+.headerAnimateStart {
+	transform: translate(0) !important;
+
+	.headerWrapper {
+		border-color: #222433;
+	}
+}
+
+@media (max-width: 1020px) {
+	.parallax {
+		display: flex;
+		justify-content: center;
+	}
+}

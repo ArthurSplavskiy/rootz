@@ -1,5 +1,8 @@
 :root {
+	--offset: 18px;
+	--offset-negative: -18px;
 	--mobileSize: 375px;
+	--headerHeight: 110px;
 	--primary: #FFBD9E;
 	--transition: all 0.3s ease-out;
 	--fontFamily: poppins,
@@ -135,6 +138,13 @@ textarea {
 .container {
 	margin: 0 auto;
 	max-width: 1280px;
-	padding: 0 18px;
+	padding: 0 var(--offset);
+	box-sizing: content-box;
+}
+
+.container-small {
+	margin: 0 auto;
+	max-width: 1120px;
+	padding: 0 var(--offset);
 	box-sizing: content-box;
 }

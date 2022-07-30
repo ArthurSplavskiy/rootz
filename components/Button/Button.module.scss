@@ -1,45 +1,20 @@
-.button {
+.btn {
 	display: inline-block;
-	padding: 10px;
+	padding: 15px 32px;
 	cursor: pointer;
-	transition: all 0.2s;
+	transition: var(--transition);
+	background: #F2726C;
+	border-radius: 30px;
 	text-align: center;
 	border: none;
-	border-radius: 5px;
-	font-size: 14px;
-}
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 140%;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #FFFFFF;
 
-.primary {
-	color: var(--white);
-	background: var(--primary);
-}
-
-.primary:hover {
-	background: var(--primary-hover);
-}
-
-.ghost {
-	color: var(--black);
-	border: 1px solid var(--grey-light);
-	background: none;
-}
-
-.ghost:hover {
-	color: var(--white);
-	background: var(--primary);
-}
-
-.arrow {
-	display: inline-block;
-	margin-left: 10px;
-	transition: all 0.2s;
-}
-
-.arrow.down {
-	transform: rotate(90deg);
-}
-
-.primary .arrow svg,
-.ghost:hover .arrow svg {
-	fill: var(--white);
+	&:hover {
+		background: var(--primary);
+	}
 }
