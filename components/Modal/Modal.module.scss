@@ -12,6 +12,17 @@
 	pointer-events: none;
 	opacity: 0;
 	z-index: 2;
+
+	&::after {
+		content: "x";
+		position: fixed;
+		top: 15px;
+		right: 30px;
+		color: #FFFFFF;
+		font-size: 36px;
+		cursor: pointer;
+		z-index: 3;
+	}
 }
 
 .content {
@@ -28,4 +39,18 @@
 
 .modal.active .content {
 	transform: scale(1);
+}
+
+@media (max-width: 768px) {
+	.content {
+		width: 100%;
+		margin: var(--offset);
+	}
+
+	.content iframe {
+		max-width: 100%;
+		width: 100% !important;
+		height: auto;
+		min-height: 300px;
+	}
 }

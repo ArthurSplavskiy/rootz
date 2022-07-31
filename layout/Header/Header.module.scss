@@ -86,6 +86,26 @@
 	}
 }
 
+.headerLogo {
+	svg path {
+		transition: var(--transition);
+	}
+
+	&.logoOnHover {
+		path:nth-last-child(1) {
+			transform: scale(0.9);
+		}
+
+		path:nth-last-child(2) {
+			transform: scale(0.8);
+		}
+
+		path:nth-last-child(3) {
+			transform: scale(0.6);
+		}
+	}
+}
+
 .burgerBtn {
 	display: none;
 	position: relative;

@@ -3,8 +3,16 @@ import { useForm } from 'react-hook-form';
 import { ILoginForm } from '../../interfaces/form.interface';
 import { Button, Input } from '../../components';
 import LeafsIcon from './vectors/leafs.svg';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useEffect, useRef } from 'react';
 
 export const Form = (): JSX.Element => {
+	const sectionRef = useRef<HTMLDivElement>(null);
+	const leafRef = useRef<HTMLDivElement>(null);
+
+	gsap.registerPlugin(ScrollTrigger);
+
 	const { register, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<ILoginForm>();
 
 	const onSubmit = async (formData: ILoginForm): Promise<void> => {
@@ -24,15 +32,29 @@ export const Form = (): JSX.Element => {
 		}
 	};
 
+	useEffect(() => {
+		const leafPaths = leafRef?.current?.children[0]?.children || '';
+		gsap.from(leafPaths, {
+			scale: 0,
+			duration: 2,
+			scrollTrigger: {
+				trigger: sectionRef?.current,
+				start: 'top center',
+			}
+		});
+	}, []);
+
 	return (
-		<section className={styles.section}>
+		<section ref={sectionRef} className={styles.section}>
 			<div className={styles.content}>
 				<div className={styles.text}>
 					<h2>Get started today!</h2>
 					<p>Learn more about how you can save our planet's nature. From smart consumption to switching to renewable energy, each of us can do our part to save the planet. </p>
 				</div>
 				<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-					<LeafsIcon className={styles.leafs} />
+					<div ref={leafRef} className={styles.leafs} >
+						<LeafsIcon  />
+					</div>
 					<h3>Log in</h3>
 					<Input
 						{...register('name')}

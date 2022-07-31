@@ -7,6 +7,8 @@ import { IMenu } from '../../interfaces/menu.interface';
 import { useState } from 'react';
 import { ActiveLink } from '../../components';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import gsap from 'gsap';
 
 const menuLinks: IMenu[] = [
 	{ id: 0, title: 'Home', route: '/' },
@@ -17,20 +19,35 @@ const menuLinks: IMenu[] = [
 
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	const [menuActive, setMenuActive] = useState<boolean>(false);
+	const [logoOnHover, setLogoOnHover] = useState<boolean>(false);
 	const headerRef = useRef<HTMLDivElement>(null);
+	const logoRef = useRef<HTMLAnchorElement>(null);
 
 	useEffect(() => {
 		headerRef?.current?.classList.add('headerAnimateStart');
 	}, []);
+
+	const hoverOnLogo = (): void => setLogoOnHover(true);
+	const leaveOnLogo = (): void => setLogoOnHover(false);
 	
 	return (
 		<>
 			<header ref={headerRef} className={cn(className, styles.header)} {...props}>
 				<div className='container'>
 					<div className={cn(styles.headerWrapper, 'headerWrapper')}>
-						<a className={styles.headerLogo} href="/" aria-label='Rootz logotype'>
-							<Logo />
-						</a>
+						<Link href="/">
+							<a
+								ref={logoRef}
+								className={cn(styles.headerLogo, {
+									[styles.logoOnHover]: logoOnHover
+								})}
+								aria-label='Rootz logotype'
+								onMouseEnter={hoverOnLogo}
+								onMouseLeave={leaveOnLogo}
+							>
+								<Logo />
+							</a>
+						</Link>
 						<div className={styles.headerActions}>
 							<nav className={styles.headerNav} aria-label='Main navigation'>
 								<ul>

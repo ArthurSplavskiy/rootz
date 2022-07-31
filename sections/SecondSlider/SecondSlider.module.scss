@@ -2,25 +2,67 @@
 	min-width: 0;
 	margin-top: 192px;
 	background: #FFBD9E;
-	padding: 104px 0;
+	padding: 264px 0 104px;
 }
 
 .sectionWrapper {
 	display: grid;
 	grid-template-columns: 1fr;
+	grid-template-areas:
+		"slider"
+		"pagination";
 	gap: 64px;
 }
 
 .slider {
+	grid-area: slider;
 	min-width: 0;
 	max-width: 100%;
 	overflow: visible;
 }
 
+.sliderPagination {
+	grid-area: pagination;
+	display: grid;
+	align-items: center;
+	justify-self: center;
+	grid-template-columns: 8px auto 8px;
+	gap: 40px;
+	margin-top: 100px;
+}
+
+.prev,
+.next {
+	border: none;
+	display: flex;
+	align-items: center;
+}
+
+.next {
+	transform: rotate(180deg);
+}
+
+.counter {
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 32px;
+}
+
+.currentSlide {
+	color: #000000;
+}
+
+.totalSlides {
+	color: rgba(#000000, 0.2);
+}
+
 .slide {
 	width: auto;
-	max-width: 438px;
 	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.6s ease-out;
 }
 
 .slideBg,
@@ -41,12 +83,16 @@
 }
 
 .swiperSlide {
-	width: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .slideBg {
 	transform: translate(-50%, -50%) scale(0);
 	transition: 0.6s ease-out;
+	width: 438px;
+	height: 383px;
 
 	&.isView {
 		transform: translate(-50%, -50%) scale(1);
@@ -61,10 +107,10 @@
 	h3 {
 		text-align: center;
 		font-weight: 600;
-		font-size: 24px;
-		line-height: 34px;
+		font-size: 18px;
+		line-height: 26px;
 		color: rgba(#FFFFFF, 0.9);
-		transform: translateY(100%);
+		transform: translateY(130%);
 		transition: all 0.6s ease-out;
 
 		&.changeColor {
@@ -75,31 +121,32 @@
 
 	p {
 		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
+		font-size: 15px;
+		line-height: 26px;
 		text-align: center;
 		color: rgba(#1E1A20, 0.9);
 		transform: scale(0) translateY(100%);
 		transition: transform 0.6s ease-out;
 
 		&.onTop {
-			transform: scale(1) translate(0);
+			transform: scale(1) translateY(8px);
 		}
+	}
+}
+
+@media (max-width: 768px) {
+	.slideBg {
+		width: 330px;
+		height: 283px;
+	}
+
+	.section {
+		padding: 240px 0 72px;
 	}
 }
 
 @media (max-width: 992px) {
 	.section {
 		margin-top: 100px;
-	}
-
-	.slide {
-		grid-template-columns: 1fr;
-
-		img,
-		svg {
-			justify-content: center;
-			max-height: 310px;
-		}
 	}
 }

@@ -4,11 +4,11 @@ import { Navigation } from 'swiper';
 import cn from 'classnames';
 import { ReactNode, useRef, useState } from 'react';
 import ArrowIcon from './vectors/arrow.svg';
-import BlobImage1 from './vectors/blob1.svg';
-import BlobImage2 from './vectors/blob2.svg';
-import BlobImage3 from './vectors/blob3.svg';
-import BlobImage4 from './vectors/blob4.svg';
-import BlobImage5 from './vectors/blob5.svg';
+import BlobImage1 from './vectors/blob-first.svg';
+import BlobImage2 from './vectors/blob-second.svg';
+import BlobImage3 from './vectors/blob-third.svg';
+import BlobImage4 from './vectors/blob-fourth.svg';
+import BlobImage5 from './vectors/blob-fivth.svg';
 import BlobBg from './vectors/blobBg.svg';
 
 interface ISlide {
@@ -64,10 +64,9 @@ export const SecondSlider = (): JSX.Element => {
 						<button className={styles.prev} ref={prevBtn}>
 							<ArrowIcon />
 						</button>
-						<div>
-							{activeIndex}
-							/
-							{slides.length}
+						<div className={styles.counter}>
+							<span className={styles.currentSlide}>{activeIndex}</span>
+							<span className={styles.totalSlides}> / {slides.length}</span>
 						</div>
 						<button className={styles.next} ref={nextBtn}>
 							<ArrowIcon />
@@ -81,20 +80,33 @@ export const SecondSlider = (): JSX.Element => {
 							prevEl: prevBtn.current,
 							nextEl: nextBtn.current,
 						}}
-						spaceBetween={72}
+						spaceBetween={52}
 						centeredSlides={true}
 						pagination={{ clickable: true }}
-						slidesPerView={'auto'}
+						slidesPerView={3}
 						onBeforeInit={(swiper: any): void => {
 							swiper.params.navigation.prevEl = prevBtn.current;
 							swiper.params.navigation.nextEl = nextBtn.current;
 						}}
 						onSlideChange={(swiper): void => setActiveIndex(swiper.activeIndex + 1)}
+						breakpoints={{
+							0: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							992: {
+								slidesPerView: 3,
+							}
+						}}
 					>
 						{slides && slides.map(slide => (
 							<SwiperSlide key={slide.id} className={styles.swiperSlide}>
 								{({ isActive }: any): JSX.Element => (
-									<div className={cn(styles.slide)}>
+									<div className={cn(styles.slide, {
+										[styles.isActive]: isActive
+									})}>
 										<div className={cn(styles.slideImage, {
 											[styles.isSmall]: isActive
 										})}>

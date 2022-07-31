@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Accordion, Button } from '../../components';
 import styles from './Faq.module.scss';
 
@@ -38,7 +39,12 @@ export const Faq = (): JSX.Element => {
 					</div>
 					<div className={styles.faqs}>
 						{faqs && faqs.map(faq => (
-							<Accordion key={faq.id} title={faq.title}>{faq.text}</Accordion>
+							<Accordion
+								key={faq.id}
+								title={faq.title}
+							>
+								{faq.text}
+							</Accordion>
 						))}
 					</div>
 				</div>
